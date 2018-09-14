@@ -1,7 +1,8 @@
 from flask import Flask
-from flask_bootstrap import Bootstrap
 from config import config_options
+from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
 
 bootstrap = Bootstrap()
 db = SQLAlchemy()
@@ -16,6 +17,7 @@ def create_app(config_name):
 
     # creating the app configurations
     app.config.from_object(config_options[config_name])
+    app.config['SECRET_KEY']='123456789'
 
 
     # initiating flask extensions
