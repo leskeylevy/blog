@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        {% if title %}
-        <title> {{ title }}</title>
-        {% else %}
-        <title> Welcome to the best blog website </title>
-        {% endif %}
-    </head>
-    <body>
-        <p>Finaly i made IT</p>
-    </body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+<p>YEEEY! I MADE IT!</p>
+{% endblock %}
