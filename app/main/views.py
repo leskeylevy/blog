@@ -1,9 +1,9 @@
 from flask import render_template
-from app import main
+from . import main
 
 
 # View
-@main.route('')
+@main.route('/')
 def index():
     '''
     view root page fxn that returns the index page and its data
