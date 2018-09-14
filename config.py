@@ -1,4 +1,6 @@
 class Config:
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://levy:newpassword@localhost/blog'
+
     @staticmethod
     def init_app(app):
         pass
