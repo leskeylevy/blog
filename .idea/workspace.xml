@@ -191,9 +191,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="748" />
     <option name="y" value="27" />
-    <option name="width" value="614" />
+    <option name="width" value="604" />
     <option name="height" value="641" />
   </component>
   <component name="ProjectView">
@@ -201,7 +200,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -239,15 +237,11 @@
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="auth" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="blog" type="b2602c69:ProjectViewProjectNode" />
-              <item name="blog" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="RunDashboard">
