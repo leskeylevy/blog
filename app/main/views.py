@@ -1,4 +1,4 @@
-from flask import render_template,redirect,request,url_for,abort
+from flask import render_template, redirect, request, url_for, abort
 from . import main
 from flask_login import login_required
 from .forms import BlogForm
@@ -15,20 +15,27 @@ def index():
     return render_template('index.html', title=title)
 
 
-@main.route('/blog',methods = ['GET','POST'])
+@main.route('/blog', methods=['GET', 'POST'])
 @login_required
 def blog():
-
     form = BlogForm()
 
     if form.validate_on_submit():
         title = form.title.data
         post = form.post.data
 
-        new_blog = Blog(title=title,post=post)
+        new_blog = Blog(title=title, post=post)
         new_blog.save_blog()
 
-        return redirect(url_for('.index'))
+        return redirect(url_for('.viewblog'))
 
     # blog = Blog.get_blog_order()
     return render_template('blog.html', BlogForm=form)
+
+
+@main.route('/viewblog', methods=['GET', 'POST'])
+@login_required
+def viewblog():
+    title = 'Recently posted blogs'
+    blogs = Blog.query.order_by(Blog.id).all()
+    return render_template('viewblog.html',title=title,blogs=blogs)
