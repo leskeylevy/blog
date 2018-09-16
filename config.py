@@ -1,3 +1,5 @@
+import os
+
 class Config:
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://levy:newpassword@localhost/blog'
 
@@ -7,6 +9,7 @@ class Config:
 
 
 class ProdConfig(Config):
+    SQLALCHEMY_DATABASE_URI = Os.environ.get("DATABASE_URL")
     pass
 
 
