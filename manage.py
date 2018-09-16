@@ -16,5 +16,6 @@ def make_shell_context():
     return dict(app=app, db=db, User=User)
 
 
-if __name__ == '__main__':
+if __name__ == '__main__'
+    SECRET_KEY=123456789
     manager.run()
