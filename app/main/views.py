@@ -3,6 +3,7 @@ from . import main
 from flask_login import login_required, current_user
 from .forms import BlogForm, CommentForm
 from ..models import Blog, Comment
+from ..email import mail_message
 
 
 # View
