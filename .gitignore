@@ -105,3 +105,4 @@ venv.bak/
 
 virtual/
 *.pyc
+start.sh
