@@ -19,8 +19,9 @@ class User(UserMixin, db.Model):
     # role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
     # bio = db.Column(db.String(255))
     # profile_pic_path = db.Column(db.String())
-
+    comments = db.relationship('Comment', backref='user', lazy="dynamic")
     password_hash = db.Column(db.String(255))
+    blog = db.relationship('Blog', backref='user', lazy="dynamic")
 
     # photos = db.relationship('PhotoProfile', backref='user', lazy="dynamic")
 
@@ -40,7 +41,7 @@ class User(UserMixin, db.Model):
 
 
 class Blog(db.Model):
-    __tablename__='blogs'
+    __tablename__ = 'blogs'
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255), index=True)
@@ -53,15 +54,40 @@ class Blog(db.Model):
         db.session.commit()
 
     @classmethod
-    def get_blog(cls,title):
+    def get_blog(cls, title):
         blog = Blog.query.filter_by(title=title).all()
 
         return blog
 
     @classmethod
     def get_pitch_order(cls):
-        blog=Blog.query.order_by('id').all()
+        blog = Blog.query.order_by('id').all()
         return blog
 
-    def __repr__(self):
+    def __repr__(self, id):
         return f'BLOG {self.title}'
+
+
+class Comment(db.Model):
+    __tablename__ = 'comments'
+
+    id = db.Column(db.Integer, primary_key=True)
+    comment = db.Column(db.String)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    def save_comment(self):
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def get_comments(cls):
+        comments = Comment.query.filter_by(id=id).all()
+        return comments
+
+    @classmethod
+    def get_comments_order(cls):
+        comments = Comment.query.order_by('id').all()
+        return comments
+
+    def __repr__(self, id):
+        return f'Comment {self.comment}'

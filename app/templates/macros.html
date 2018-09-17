@@ -3,8 +3,17 @@
     {% for blog in blogs %}
         <h1>{{blog.title}}</h1>
         <li>{{blog.post}}</li>
-        <button href="{{url_for('main.comment',id=blog.id)}}">comment></button>
-        <button>Upvotes</button> display:
+        <button><a href="{{url_for('main.comment',id=blog.id)}}">comment</a></button>
+        <button>Upvotes</button>
         <button>Downvotes</button>
     {% endfor %}
+{% endmacro %}
+
+{% macro displayCommentList(comment_list) %}
+    {% for comment in comment_list %}
+    <p>{{comment.comment}}</p>
+    <button>LIKE</button>
+    <button>Dislike</button>
+    {% endfor %}
+
 {% endmacro %}

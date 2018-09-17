@@ -1,23 +1,18 @@
 import os
 
-class Config:
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://levy:newpassword@localhost/blog'
 
-    @staticmethod
-    def init_app(app):
-        pass
+class Config:
+    SECRET_KEY = os.environ.get('SECRET_KEY')
+    # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://levy:newpassword@localhost/blog'
 
 
 class ProdConfig(Config):
-    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+    # SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
     pass
 
-
 class DevConfig(Config):
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://levy:newpassword@localhost/blog'
     DEBUG = True
 
 
-config_options = {
-    'development': DevConfig,
-    'production': ProdConfig
-}
+config_options = {"production": ProdConfig, "development": DevConfig}
